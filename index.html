@@ -1,0 +1,48 @@
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Website</h1>
+        <img src="./1.jpg" alt="Website Image">
+    </header>
+    <div id="container">
+        <h2>Contact Us</h2>
+        <form id="contactForm" onsubmit="return validateForm()">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name"><br>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email"><br>
+            <span id="error"></span><br>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function validateForm() {
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const errorElement = document.getElementById("error");
+
+            if (name === "" || email === "") {
+                errorElement.textContent = "Name and Email are required!";
+                return false;
+            }
+
+            const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+            if (!emailPattern.test(email)) {
+                errorElement.textContent = "Invalid email address!";
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
